@@ -79,6 +79,6 @@ void RandomMeasuresAndFitP1(){
   labelf->SetLabel(TString::Format("<Chi^2> fit   = %f",hchi2f->GetMean()));
   labelf->Draw();
 
-  tc->Print("RandomMeasuresP1AndFit.gif+1000");  // 1000ms delay before repeat
+  tc->Print("RandomMeasuresAndFitP1.gif+1000");  // 1000ms delay before repeat
 }
 
