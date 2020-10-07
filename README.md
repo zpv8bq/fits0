@@ -6,5 +6,5 @@ our discussion of fitting data.
 - Interpolate.ipynb: Jupyter notebook illustrating the Lagrange interpolation 
 and cubic splines.
 - LSQFit.C: starter code for the Least Squares Fitting exercise
-- RandomMeasuresP1.C, RandomGaus.C: code to generate gif movies shown in class<br/>
+- RandomMeasuresP1.C, RandomGaus.C, RandomMeasuresAndFitP1.C: code to generate gif movies linked to class notes<br/>
 eg. root -l RandomMeasuresP1.C
