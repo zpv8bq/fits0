@@ -73,6 +73,12 @@ void RandomMeasuresAndFitP1(){
     if (nt<50) tc->Print("RandomMeasuresAndFitP1.gif+100");  // 100ms between frames
     gSystem->Sleep(250);  // pause between trials 500ms
   }
-  tc->Print("RandomMeasuresP1AndFit.gif+500");  // 500ms delay before repeat
+  tc->cd(1);
+  labelm->SetLabel(TString::Format("<Chi^2> model = %f",hchi2m->GetMean()));
+  labelm->Draw();
+  labelf->SetLabel(TString::Format("<Chi^2> fit   = %f",hchi2f->GetMean()));
+  labelf->Draw();
+
+  tc->Print("RandomMeasuresP1AndFit.gif+1000");  // 1000ms delay before repeat
 }
 
