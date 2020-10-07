@@ -35,10 +35,10 @@ void RandomMeasuresAndFitP1(){
   TF1 *fun=new TF1("f","[0]*x+[1]",0,n);
   fun->SetLineStyle(2);
   fun->SetParameters(m,b);
-  auto labelm=new TPaveLabel(-0.5,17,3.5,19,"");
-  auto labelf=new TPaveLabel(-0.5,15,3.5,17,"");
+  auto labelm=new TPaveLabel(-0.5,17,4.0,19,"");
+  auto labelf=new TPaveLabel(-0.5,15,4.0,17,"");
   auto tl=new TLegend(0.1,0.6,0.3,0.75);
-  tl->AddEntry(hchi2m,"#chi^{2} wrt model","l");
+  tl->AddEntry(hchi2m,"#chi^{2} wrt truth","l");
   tl->AddEntry(hchi2f,"#chi^{2} wrt fit","l");
 
   
@@ -58,9 +58,9 @@ void RandomMeasuresAndFitP1(){
     tg->GetFunction("pol1")->Draw("same");
     fun->Draw("same");
     double chi2fit=res->Chi2();  // chi^2 from the 2-parameter fit
-    labelm->SetLabel(TString::Format("Chi^2 model = %f",chi2model));
+    labelm->SetLabel(TString::Format("Chi^2 wrt model (dashed) = %5.2lf",chi2model));
     labelm->Draw();
-    labelf->SetLabel(TString::Format("Chi^2 fit   = %f",chi2fit));
+    labelf->SetLabel(TString::Format("Chi^2 wrt fit (solid)   = %5.2lf",chi2fit));
     labelf->Draw();
     tg->Draw("P");
     tc->cd(2);
