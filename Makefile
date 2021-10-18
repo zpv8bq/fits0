@@ -10,4 +10,4 @@ RKdemo:  LSQFit.cpp
 	$(GXX) -o LSQFit LSQFit.cpp $(ROOTCFLAGS) $(LIBS) $(ROOTGLIBS)
 
 clean:
-	rm -f *.d *.so *.pcm
+	rm -f *.d *.so *.pcm LSQFit
