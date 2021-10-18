@@ -15,7 +15,7 @@ void RandomMeasuresAndFitP1(){
   const double sigma=1.0;
   gStyle->SetOptStat(0);
   
-  const Int_t ntrials=100;
+  const Int_t ntrials=300;
   const double m=1.5;
   const double b=0.75;
   
@@ -64,8 +64,8 @@ void RandomMeasuresAndFitP1(){
     labelf->Draw();
     tg->Draw("P");
     tc->cd(2);
-    hchi2m->Fill(chi2fit);
-    hchi2f->Fill(chi2model);
+    hchi2m->Fill(chi2model);
+    hchi2f->Fill(chi2fit);
     hchi2m->Draw();
     hchi2f->Draw("same");
     tl->Draw();
