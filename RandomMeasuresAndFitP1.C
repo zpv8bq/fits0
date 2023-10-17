@@ -1,11 +1,12 @@
 // Generate random data sets based on a model f(x) = mx+b
 // apply a linear fit, display the chi^2 per experiment
 
-void RandomMeasuresAndFitP1(){
+void RandomMeasuresAndFitP1(bool makeGIF=false){
   TCanvas *tc=new TCanvas();
   tc->Divide(1,2);
   TRandom2 tr;
-  gSystem->Unlink("RandomMeasuresAndFitP1.gif"); // delete old file
+  if (makeGIF)
+    gSystem->Unlink("RandomMeasuresAndFitP1.gif"); // delete old file
   
   const Int_t n = 10;  // plot to points
   Double_t x[n];
@@ -29,9 +30,9 @@ void RandomMeasuresAndFitP1(){
   tg->SetMarkerColor(4);
   tg->SetMarkerStyle(21);
   TH2F *h=new TH2F("h","Pseudoexperiments",5,-0.5,n+0.5,5,b-4*sigma,20);
-  TH1F *hchi2m=new TH1F("hchi2","Chi^2 distribution",20,n-3*sqrt(2*n),n+3*sqrt(2*n));
+  TH1F *hchi2m=new TH1F("hchi2m","Chi^2 distribution",20,n-3*sqrt(2*n),n+3*sqrt(2*n));
   hchi2m->SetLineStyle(2);
-  TH1F *hchi2f=new TH1F("hchi2","Chi^2 distribution",20,n-3*sqrt(2*n),n+3*sqrt(2*n));
+  TH1F *hchi2f=new TH1F("hchi2f","Chi^2 distribution",20,n-3*sqrt(2*n),n+3*sqrt(2*n));
   TF1 *fun=new TF1("f","[0]*x+[1]",0,n);
   fun->SetLineStyle(2);
   fun->SetParameters(m,b);
@@ -70,7 +71,10 @@ void RandomMeasuresAndFitP1(){
     hchi2f->Draw("same");
     tl->Draw();
     tc->Update();
-    if (nt<50) tc->Print("RandomMeasuresAndFitP1.gif+100");  // 100ms between frames
+    if (makeGIF){
+      // 100ms between frames
+      if (nt<50) tc->Print("RandomMeasuresAndFitP1.gif+100");
+    }
     gSystem->Sleep(250);  // pause between trials 500ms
   }
   tc->cd(1);
@@ -78,7 +82,7 @@ void RandomMeasuresAndFitP1(){
   labelm->Draw();
   labelf->SetLabel(TString::Format("<Chi^2> fit   = %f",hchi2f->GetMean()));
   labelf->Draw();
-
-  tc->Print("RandomMeasuresAndFitP1.gif+1000");  // 1000ms delay before repeat
+  if (makeGIF)
+    tc->Print("RandomMeasuresAndFitP1.gif+1000");  // 1000ms delay before repeat
 }
 
