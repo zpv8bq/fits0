@@ -8,7 +8,7 @@ our discussion of fitting data.
 and cubic splines.
 - LeastSquareFit[ROOT].ipynb: notebooks describing the exercise using numpy/matplotlib [or ROOT] tools
 - LSQFit.C(py): starter code for the Least Squares Fitting exercise
-- PlottingReview.ipynb a review of basif plot making in matplotlib and ROOT
+- PlottingReview.ipynb a review of basic plot making in matplotlib and ROOT
 - RandomMeasuresP1.C, RandomGaus.C, RandomMeasuresAndFitP1.C: code to generate movies linked to the class notes<br/>
 eg. in root: <br>
 root> .X RandomMeasuresP1.C
