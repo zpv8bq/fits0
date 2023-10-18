@@ -3,7 +3,10 @@
 #include "TMath.h"
 #include "TApplication.h"
 #include "TCanvas.h"
+#include "TH2F.h"
+#include "TH1F.h"
 #include "TGClient.h"
+#include "TStyle.h"
 
 
 #include <iostream>
@@ -23,7 +26,6 @@ double f(double x){
   const double c=0.5;
   return a+b*Log(x)+c*Log(x)*Log(x);
 }
-
 
 void getX(double *x){
   double step=(xmax-xmin)/npoints;
@@ -60,7 +62,11 @@ int main(int argc, char **argv){
   //UInt_t dw = gClient->GetDisplayWidth();
   UInt_t dw = 1.1*dh;
   // ******************************************************************************
-  TCanvas *tc = new TCanvas("c1","DEQ solutions",dw,dh);
+
+  gStyle->SetOptStat(0); // turn off histogram stats box
+
+
+  TCanvas *tc = new TCanvas("c1","Sample dataset",dw,dh);
 
   double lx[npoints];
   double ly[npoints];
@@ -74,6 +80,29 @@ int main(int argc, char **argv){
   // An example of one pseudo experiment
   tgl->Draw("alp");
   tc->Draw();
+
+
+  
+  // *** modify and add your code here ***
+
+  TH2F *h1 = new TH2F("h1","Parameter b vs a;a;b",100,0,1,100,0,1);
+  TH2F *h2 = new TH2F("h2","Parameter c vs a;a;c",100,0,1,100,0,1);
+  TH2F *h3 = new TH2F("h3","Parameter c vs b;b;c",100,0,1,100,0,1);
+  TH1F *h4 = new TH1F("h4","reduced chi^2;;frequency",100,0,1);
+
+  // perform many least squares fits on different pseudo experiments here
+  // fill histograms w/ required data
+  
+  TCanvas *tc2 = new TCanvas("c2","my study results",200,200,dw,dh);
+  tc2->Divide(2,2);
+  tc2->cd(1); h1->Draw("colz");
+  tc2->cd(2); h2->Draw("colz");
+  tc2->cd(3); h3->Draw("colz");
+  tc2->cd(4); h4->Draw();
+  
+  tc2->Draw();
+
+  // **************************************
   
   cout << "Press ^c to exit" << endl;
   theApp.SetIdleTimer(30,".q");  // set up a failsafe timer to end the program  
