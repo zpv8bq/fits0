@@ -5,7 +5,7 @@ our discussion of fitting data.
 
 - CLT.ipynb: example of Central Limit Theorem
 - LeastSquareFit[ROOT].ipynb: notebooks describing the exercise using numpy/matplotlib [or ROOT] tools
-- LSQFit.C(py): starter code for the Least Squares Fitting exercise
+- LSQFit.C(py): **starter code** for the Least Squares Fitting exercise
 - RandomMeasuresP1.C, RandomGaus.C, RandomMeasuresAndFitP1.C: code to generate movies linked to the class notes<br/>
 eg. in root: <br>
 root> .X RandomMeasuresP1.C
