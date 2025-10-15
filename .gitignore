@@ -1,5 +1,6 @@
 .ipynb_checkpoints
 __pycache__
+LSQFit
 *.d 
 *.so 
 *.pcm
